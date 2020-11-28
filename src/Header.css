@@ -56,12 +56,12 @@
   font-weight: normal;
 }
 
-.headerOptionBasket {
+.headerOptionCart {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
 
-.header_BasketCount {
+.header_CartCount {
   margin: auto 5px;
 }

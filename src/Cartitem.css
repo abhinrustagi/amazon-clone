@@ -1,0 +1,12 @@
+.Cart_item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 15px;
+}
+
+.Cart_item > img {
+  width: 30%;
+  margin-right: 10px;
+}
