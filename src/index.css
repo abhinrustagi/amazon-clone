@@ -21,6 +21,7 @@ code {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 input:focus,
@@ -31,4 +32,8 @@ button:focus {
 
 button {
   cursor: pointer;
+}
+
+hr {
+  margin: 15px 0;
 }

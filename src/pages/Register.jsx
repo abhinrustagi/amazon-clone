@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { auth } from "../utils/firebase";
 
 function Register() {
+  const History = useHistory();
   const [state, changeState] = useState({
     email: "",
     password: "",

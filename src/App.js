@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -7,6 +6,7 @@ import Home from "./pages/Home";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Payment from "./pages/Payment";
 import Footer from "./components/Footer";
 import { auth } from "./utils/firebase";
 import { useStateValue } from "./utils/StateProvider.js";
@@ -41,6 +41,10 @@ function App() {
           </Route>
           <Route exact path="/register">
             <Register />
+          </Route>
+          <Route exact path="/payment">
+            <Header />
+            <Payment />
           </Route>
         </Switch>
       </div>

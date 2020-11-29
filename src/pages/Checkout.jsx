@@ -6,7 +6,7 @@ import Subtotal from "../components/Subtotal";
 import CartItem from "../components/CartItem";
 import { useStateValue } from "../utils/StateProvider";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Checkout() {
   const [{ Cart, user }, dispatch] = useStateValue();
