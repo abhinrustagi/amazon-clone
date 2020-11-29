@@ -30,7 +30,9 @@ const CartItem = ({ title, image, price, rating, id }) => {
               <StarIcon className="productRatingStar" />
             ))}
         </div>
-        <button onClick={removeFromCart}>Remove Item from Cart</button>
+        <button class="removeButton" onClick={removeFromCart}>
+          Remove Item from Cart
+        </button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@
 }
 
 .Cart_item > img {
-  max-width: 180px;
+  width: 180px;
   height: 180px;
   object-fit: contain;
 }
@@ -12,4 +12,8 @@
 .CartItem_info {
   display: inline-block;
   padding-left: 20px;
+}
+
+.removeButton {
+  margin: 10px 0;
 }

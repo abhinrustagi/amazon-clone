@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { Link, useHistory } from "react-router-dom";
-import { db, auth } from "./firebase";
+import { auth } from "./firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,19 +9,16 @@ function Login() {
   const History = useHistory();
   const signIn = (e) => {
     e.preventDefault();
-  };
 
-  const register = (e) => {
-    e.preventDefault();
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        if (auth) {
-          History.push("/");
-        }
+        History.push("/");
       })
       .catch((err) => alert(err.message));
   };
+
+
 
   return (
     <div className="login">
@@ -61,9 +58,9 @@ function Login() {
       </div>
       <div className="registerAsk">
         <p className="registrationPrompt">New to Amazon?</p>
-        <button onSubmit={register} className="registerButton">
-          Create your Amazon Account
-        </button>
+        <Link to="/register">
+          <button className="registerButton">Create your Amazon Account</button>
+        </Link>
       </div>
     </div>
   );

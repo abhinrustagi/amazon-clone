@@ -9,7 +9,7 @@ import { useStateValue } from "./StateProvider";
 import { Link } from "react-router-dom";
 
 function Checkout() {
-  const [{ Cart }, dispatch] = useStateValue();
+  const [{ Cart, user }, dispatch] = useStateValue();
   return (
     <div className="checkout">
       <div className="checkout_left">
@@ -19,17 +19,20 @@ function Checkout() {
           alt="..."
         />
         <div>
-          <h2 className="checkout_title">Your Shopping Cart</h2>
-          {Cart ? (
-            <p
+          {user ? (
+            <h3
               style={{
-                fontSize: "1.1rem",
-                margin: "15px",
+                margin: "auto 15px",
               }}
             >
-              Cart is empty. <Link to="/">Continue shopping.</Link>
-            </p>
+              Hello, 
+              {user.email}
+            </h3>
           ) : (
+            ""
+          )}
+          <h2 className="checkout_title">Your Shopping Cart</h2>
+          {Cart.length > 0 ? (
             Cart.map((item) => (
               <CartItem
                 id={item.id}
@@ -39,6 +42,15 @@ function Checkout() {
                 rating={item.rating}
               />
             ))
+          ) : (
+            <p
+              style={{
+                fontSize: "1.1rem",
+                margin: "15px",
+              }}
+            >
+              Cart is empty. <Link to="/">Continue shopping.</Link>
+            </p>
           )}
         </div>
       </div>

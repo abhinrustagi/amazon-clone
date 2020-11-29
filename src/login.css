@@ -18,11 +18,9 @@
   object-fit: contain;
 }
 
-a {
-}
-
 .login_container h5 {
   margin: 10px auto 5px;
+  text-align: left;
 }
 
 .login_container {

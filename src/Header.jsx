@@ -7,9 +7,16 @@ import SearchIcon from "@material-ui/icons/Search";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useStateValue } from "./StateProvider.js";
+import { auth } from "./firebase";
 
 function Header() {
-  const [{ Cart }, dispatch] = useStateValue();
+  const [{ Cart, user }, dispatch] = useStateValue();
+
+  const handleAuth = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
 
   return (
     <div className="header" id="top">
@@ -32,9 +39,12 @@ function Header() {
         <SearchIcon className="headerSearchIcon" />
       </div>
       <div className="headerNav">
-        <Link to="/login">
-          <div className="headerOption">
-            <span className="headerOption_Line1">Hello, Guest</span>Sign In
+        <Link to={!user && "/login"}>
+          <div onClick={handleAuth} className="headerOption">
+            <span className="headerOption_Line1">
+              Hello, {user ? user.email : "Guest"}
+            </span>
+            {user ? "Sign Out" : "Sign In"}
           </div>
         </Link>
         <div className="headerOption">
