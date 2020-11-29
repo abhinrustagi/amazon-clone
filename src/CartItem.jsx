@@ -1,22 +1,18 @@
 import React from "react";
 import "./Cartitem.css";
 import { useStateValue } from "./StateProvider";
+import StarIcon from "@material-ui/icons/Star";
 
 const CartItem = ({ title, image, price, rating, id }) => {
   const [{ Cart }, dispatch] = useStateValue();
 
-  // const removeFromCart = () => {
-  //   dispatch({
-  //     type: "REMOVE_FROM_Cart",
-  //     item: {
-  //       id: id,
-  //       title: title,
-  //       image: image,
-  //       price: price,
-  //       rating: rating,
-  //     },
-  //   });
-  // };
+  const removeFromCart = () => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      id: id,
+    });
+    console.log("Removed");
+  };
 
   return (
     <div className="Cart_item">
@@ -27,8 +23,14 @@ const CartItem = ({ title, image, price, rating, id }) => {
           <small>₹</small>
           <strong>{price.toFixed(2)}</strong>
         </p>
-
-        <button>Remove Item from Cart</button>
+        <div className="productRating">
+          {Array(rating)
+            .fill()
+            .map((_, i) => (
+              <StarIcon className="productRatingStar" />
+            ))}
+        </div>
+        <button onClick={removeFromCart}>Remove Item from Cart</button>
       </div>
     </div>
   );

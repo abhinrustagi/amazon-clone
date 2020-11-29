@@ -7,11 +7,9 @@ import { useStateValue } from "./StateProvider";
 function Product({ id, title, price, image, rating }) {
   const [{ Cart }, dispatch] = useStateValue();
 
-  console.log(Cart);
-
   const addToCart = () => {
     dispatch({
-      type: "ADD_TO_Cart",
+      type: "ADD_TO_CART",
       item: {
         id: id,
         title: title,
@@ -33,11 +31,9 @@ function Product({ id, title, price, image, rating }) {
         <div className="productRating">
           {Array(rating)
             .fill()
-            .map((_, i) => {
-              <p>
-                <StarIcon className="productRatingStar" />
-              </p>;
-            })}
+            .map((_, i) => (
+              <StarIcon className="productRatingStar" />
+            ))}
         </div>
       </div>
       <img src={image} alt="..." />

@@ -24,11 +24,13 @@ function Home() {
             image="https://images-na.ssl-images-amazon.com/images/I/81vP3wTlRoL._SL1500_.jpg"
             price={28967.0}
             rating={4}
+            id={456}
           />
           <Product
             title="Fire TV Stick with Alexa Voice Remote (includes TV controls) | Stream HD Quality Video with Dolby Atmos Audio"
             image="https://images-na.ssl-images-amazon.com/images/I/51Tbwd2PaDL._SL1000_.jpg"
             price={3999}
+            id={5456}
           />
         </div>
         <div className="homeRow">
@@ -36,28 +38,33 @@ function Home() {
             title="iPhone X 128 GB Space Gray"
             price={79876.0}
             rating={5}
+            id={3456}
             image="https://www.freeiconspng.com/thumbs/iphone-x-pictures/apple-iphone-x-pictures-5.png"
           />
           <Product
             title="Wildcraft 65 ltrs Green Hiking Backpack (Gangotri Plus Green)"
             price={5196.0}
+            id={2456}
             image="https://images-na.ssl-images-amazon.com/images/I/91mVoMhPlmL._SL1500_.jpg"
           />
           <Product
             title="The Hitman: The Rohit Sharma Story Paperback"
             image="https://images-na.ssl-images-amazon.com/images/I/51oBkcJvDRL._SX326_BO1,204,203,200_.jpg"
             price={458.0}
+            id={4356}
           />
         </div>
         <div className="homeRow">
           <Product
             title="New Apple MacBook Pro (13-inch, 8GB RAM, 512GB SSD, 1.4GHz Quad-core 8th-Generation Intel Core i5 Processor, Magic Keyboard) - Space Grey"
             price={142990.0}
+            id={4546}
             image="https://images-na.ssl-images-amazon.com/images/I/71YRSVXhgQL._SL1500_.jpg"
           />
           <Product
             title="Nike Men's Regular Fit T-Shirt "
             price={1926.0}
+            id={4565}
             image="https://images-na.ssl-images-amazon.com/images/I/81HKxM07U7L._UL1500_.jpg"
           />
         </div>

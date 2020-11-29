@@ -4,11 +4,10 @@
   background-color: white;
   z-index: 1;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin: 10px;
   padding: 20px;
   width: 100%;
-  max-height: 400px;
   min-width: 100px;
   box-sizing: border-box;
 }
@@ -25,7 +24,6 @@
 }
 
 .productInfo {
-  height: 100px;
   margin-bottom: 15px;
   text-align: left;
   width: 100%;

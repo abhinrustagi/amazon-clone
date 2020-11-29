@@ -3,8 +3,10 @@ import "./Checkout.css";
 
 import Subtotal from "./Subtotal";
 
-// import CartItem from "./CartItem";
+import CartItem from "./CartItem";
 import { useStateValue } from "./StateProvider";
+
+import { Link } from "react-router-dom";
 
 function Checkout() {
   const [{ Cart }, dispatch] = useStateValue();
@@ -18,9 +20,17 @@ function Checkout() {
         />
         <div>
           <h2 className="checkout_title">Your Shopping Cart</h2>
-
-          {/* {Cart.map((item) => {
-            return (
+          {Cart ? (
+            <p
+              style={{
+                fontSize: "1.1rem",
+                margin: "15px",
+              }}
+            >
+              Cart is empty. <Link to="/">Continue shopping.</Link>
+            </p>
+          ) : (
+            Cart.map((item) => (
               <CartItem
                 id={item.id}
                 title={item.title}
@@ -28,8 +38,8 @@ function Checkout() {
                 image={item.image}
                 rating={item.rating}
               />
-            );
-          })} */}
+            ))
+          )}
         </div>
       </div>
       <div className="checkout_right">

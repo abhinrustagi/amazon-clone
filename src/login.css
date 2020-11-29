@@ -1,0 +1,76 @@
+.login {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-content: center;
+  background-color: white;
+}
+.login_logo {
+  text-align: center;
+}
+
+.login_logo > img {
+  width: 120px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+a {
+}
+
+.login_container h5 {
+  margin: 10px auto 5px;
+}
+
+.login_container {
+  padding: 20px 26px !important;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login_container > h1 {
+  font-weight: 400;
+}
+
+.input {
+  background-color: #fff;
+  height: 31px;
+  width: 100%;
+  padding: 3px 7px;
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  margin: 10px auto;
+  max-width: 350px;
+}
+
+.registerButton {
+  background: #e7e9ec;
+  background-image: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
+  border-radius: 3px;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+}
+
+.registrationPrompt {
+  color: #767676;
+  text-align: center;
+  width: 100%;
+  margin-bottom: -5px;
+  font-size: 12px;
+  margin-top: 20px;
+}
