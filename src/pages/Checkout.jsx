@@ -1,10 +1,10 @@
 import React from "react";
-import "./Checkout.css";
+import "./styles/Checkout.css";
 
-import Subtotal from "./Subtotal";
+import Subtotal from "../components/Subtotal";
 
-import CartItem from "./CartItem";
-import { useStateValue } from "./StateProvider";
+import CartItem from "../components/CartItem";
+import { useStateValue } from "../utils/StateProvider";
 
 import { Link } from "react-router-dom";
 
@@ -25,7 +25,7 @@ function Checkout() {
                 margin: "auto 15px",
               }}
             >
-              Hello, 
+              Hello,
               {user.email}
             </h3>
           ) : (

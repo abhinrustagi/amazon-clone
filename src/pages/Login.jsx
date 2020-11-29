@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./styles/login.css";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "./firebase";
+import { auth } from "../utils/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,8 +17,6 @@ function Login() {
       })
       .catch((err) => alert(err.message));
   };
-
-
 
   return (
     <div className="login">

@@ -1,6 +1,6 @@
 import React from "react";
-import "./Cartitem.css";
-import { useStateValue } from "./StateProvider";
+import "./styles/CartItem.css";
+import { useStateValue } from "../utils/StateProvider";
 import StarIcon from "@material-ui/icons/Star";
 
 const CartItem = ({ title, image, price, rating, id }) => {

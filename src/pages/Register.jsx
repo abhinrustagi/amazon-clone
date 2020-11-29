@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Register.css";
+import "./styles/Register.css";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "./firebase";
+import { auth } from "../utils/firebase";
 
 function Register() {
   const [state, changeState] = useState({

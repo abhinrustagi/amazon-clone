@@ -1,8 +1,8 @@
 import React from "react";
-import "./Product.css";
+import "./styles/Product.css";
 import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../utils/StateProvider";
 
 function Product({ id, title, price, image, rating }) {
   const [{ Cart }, dispatch] = useStateValue();

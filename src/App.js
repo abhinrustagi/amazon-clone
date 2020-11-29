@@ -2,14 +2,14 @@ import "./App.css";
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Header from "./Header";
-import Home from "./Home";
-import Checkout from "./Checkout";
-import Login from "./login";
-import Register from "./Register";
-import Footer from "./Footer";
-import { auth } from "./firebase";
-import { useStateValue } from "./StateProvider.js";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Checkout from "./pages/Checkout";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Footer from "./components/Footer";
+import { auth } from "./utils/firebase";
+import { useStateValue } from "./utils/StateProvider.js";
 
 function App() {
   const [{}, dispatch] = useStateValue();

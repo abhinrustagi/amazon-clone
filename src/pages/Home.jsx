@@ -1,7 +1,7 @@
 import React from "react";
-import "./Home.css";
+import "./styles/Home.css";
 
-import Product from "./Product";
+import Product from "../components/Product";
 
 const img_Urls = [
   "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/CyberMonday/Fuji_TallHero_CM_v2_en_US_1x._CB414209152_.png",
