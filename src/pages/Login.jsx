@@ -22,10 +22,11 @@ function Login() {
     <div className="login">
       <Link to="/" className="login_logo">
         <img
-          src="https://www.acisolutions.net/wp-content/uploads/2019/09/amazon-logo-vector-png-amazon-logo-vector-512.png"
+          src="https://www.marketplace.org/wp-content/uploads/2019/07/ama2.png?resize=740%2C204"
           alt="..."
         />
       </Link>
+
       <div className="login_container">
         <h1>Sign In</h1>
         <form>
@@ -54,6 +55,7 @@ function Login() {
           Privacy Notice.
         </small>
       </div>
+
       <div className="registerAsk">
         <p className="registrationPrompt">New to Amazon?</p>
         <Link to="/register">

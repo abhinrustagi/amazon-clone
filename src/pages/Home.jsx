@@ -18,6 +18,7 @@ function Home() {
           alt=""
           className="bannerImage"
         />
+
         <div className="homeRow">
           <Product
             title="Sony PS4 1TB Slim Console with Additional Dualshock Controller & God of War (PS4) "
@@ -33,6 +34,7 @@ function Home() {
             id={5456}
           />
         </div>
+
         <div className="homeRow">
           <Product
             title="iPhone X 128 GB Space Gray"
@@ -54,6 +56,7 @@ function Home() {
             id={4356}
           />
         </div>
+
         <div className="homeRow">
           <Product
             title="New Apple MacBook Pro (13-inch, 8GB RAM, 512GB SSD, 1.4GHz Quad-core 8th-Generation Intel Core i5 Processor, Magic Keyboard) - Space Grey"

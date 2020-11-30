@@ -47,6 +47,10 @@
   border-color: #a88734 #9c7e31 #846a29;
 }
 
+.product > button:hover {
+  background: linear-gradient(to bottom, #f4d486, #eeba37);
+}
+
 .productTitle {
   font-size: 1.3rem;
 }

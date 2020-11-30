@@ -1,8 +1,8 @@
 .bannerImage {
   width: 100%;
   z-index: -1;
-  min-height: 30%;
-  margin-bottom: -250px;
+  min-height: 20%;
+  margin-bottom: -200px;
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 40%,

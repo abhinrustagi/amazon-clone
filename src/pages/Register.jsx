@@ -35,10 +35,11 @@ function Register() {
     <div className="registerPage">
       <Link to="/" className="login_logo">
         <img
-          src="https://www.acisolutions.net/wp-content/uploads/2019/09/amazon-logo-vector-png-amazon-logo-vector-512.png"
+          src="https://www.marketplace.org/wp-content/uploads/2019/07/ama2.png?resize=740%2C204"
           alt="..."
         />
       </Link>
+
       <div className="login_container">
         <h5>Name</h5>
         <input
@@ -72,6 +73,7 @@ function Register() {
           onChange={handleChange}
           value={state.phone}
         />
+
         <button onClick={register}>Continue</button>
       </div>
     </div>

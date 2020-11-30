@@ -1,0 +1,16 @@
+.order_total {
+  float: right;
+}
+
+.order {
+  margin: 20px auto;
+  position: relative;
+  padding-bottom: 5px;
+  border-bottom: 1px solid gray;
+}
+
+.order_id {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

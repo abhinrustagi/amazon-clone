@@ -25,7 +25,8 @@ function Subtotal() {
         value={getCartTotal(Cart)}
         displayType={"text"}
         thousandSeparator={true}
-        prefix={"₹"}
+        // prefix={"₹"}
+        prefix={"$"}
       />
       {Cart.length > 0 ? (
         <button onClick={(e) => history.push("/payment")}>

@@ -24,3 +24,7 @@
 .payment_details {
   flex: 0.8;
 }
+
+.payment_price {
+  margin: 15px auto;
+}

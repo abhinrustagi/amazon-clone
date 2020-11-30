@@ -1,13 +1,13 @@
 import React from "react";
 import "./styles/Header.css";
 
+import { useStateValue } from "../utils/StateProvider.js";
+import { auth } from "../utils/firebase";
 import { Link } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useStateValue } from "../utils/StateProvider.js";
-import { auth } from "../utils/firebase";
 
 function Header() {
   const [{ Cart, user }, dispatch] = useStateValue();
@@ -27,6 +27,7 @@ function Header() {
           alt="..."
         />
       </Link>
+
       <div className="headerOption">
         <span className="headerOption_Line1">Deliver to</span>
         <span className="headerOption_DeliverTo_SecondLine">
@@ -34,10 +35,12 @@ function Header() {
           India
         </span>
       </div>
+
       <div className="headerSearch">
         <input className="headerSearchInput" type="text" />
         <SearchIcon className="headerSearchIcon" />
       </div>
+
       <div className="headerNav">
         <Link to={!user && "/login"}>
           <div onClick={handleAuth} className="headerOption">
@@ -47,12 +50,17 @@ function Header() {
             {user ? "Sign Out" : "Sign In"}
           </div>
         </Link>
-        <div className="headerOption">
-          <span className="headerOption_Line1">Returns</span>& Orders
-        </div>
+
+        <Link to="/orders">
+          <div className="headerOption">
+            <span className="headerOption_Line1">Returns</span>& Orders
+          </div>
+        </Link>
+
         <div className="headerOption">
           <span className="headerOption_Line1">Your</span>Prime
         </div>
+
         <Link to="/checkout">
           <div className="headerOption headerOptionCart">
             <ShoppingCartIcon />

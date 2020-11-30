@@ -28,6 +28,7 @@ function Product({ id, title, price, image, rating }) {
           <small>₹</small>
           <strong>{price.toFixed(2)}</strong>
         </p>
+
         <div className="productRating">
           {Array(rating)
             .fill()
@@ -36,7 +37,9 @@ function Product({ id, title, price, image, rating }) {
             ))}
         </div>
       </div>
+
       <img src={image} alt="..." />
+
       <button onClick={addToCart}>
         Add to Cart <ShoppingCartIcon style={{ marginLeft: "5px" }} />
       </button>

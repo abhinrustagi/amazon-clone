@@ -2,10 +2,9 @@ import React from "react";
 import "./styles/Checkout.css";
 
 import Subtotal from "../components/Subtotal";
-
 import CartItem from "../components/CartItem";
-import { useStateValue } from "../utils/StateProvider";
 
+import { useStateValue } from "../utils/StateProvider";
 import { Link, useHistory } from "react-router-dom";
 
 function Checkout() {
@@ -25,13 +24,14 @@ function Checkout() {
                 margin: "auto 15px",
               }}
             >
-              Hello,
-              {user.email}
+              {"Hello, " + user.email}
             </h3>
           ) : (
             ""
           )}
+
           <h2 className="checkout_title">Your Shopping Cart</h2>
+
           {Cart.length > 0 ? (
             Cart.map((item) => (
               <CartItem
@@ -54,6 +54,7 @@ function Checkout() {
           )}
         </div>
       </div>
+
       <div className="checkout_right">
         <Subtotal />
       </div>
