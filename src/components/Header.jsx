@@ -57,9 +57,11 @@ function Header() {
           </div>
         </Link>
 
-        <div className="headerOption">
-          <span className="headerOption_Line1">Your</span>Prime
-        </div>
+        <Link to="/profile">
+          <div className="headerOption">
+            <span className="headerOption_Line1">Your</span>Profile
+          </div>
+        </Link>
 
         <Link to="/checkout">
           <div className="headerOption headerOptionCart">

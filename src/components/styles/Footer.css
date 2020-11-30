@@ -3,4 +3,6 @@
   color: white;
   padding: 30px;
   text-align: center;
+  bottom: 0;
+  display: flex;
 }

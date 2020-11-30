@@ -1,0 +1,33 @@
+.profile {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.info {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.profile_left {
+  flex: 0.2;
+}
+
+.profile_table {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.profile_right {
+  text-align: left;
+}
+
+.segment {
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
+}
+.profile h1 {
+  margin-bottom: 15px;
+}

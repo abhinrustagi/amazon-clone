@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Payment from "./pages/Payment";
 import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
+import Profile from "./pages/Profile";
 
 import { auth } from "./utils/firebase";
 import { useStateValue } from "./utils/StateProvider.js";
@@ -62,7 +63,13 @@ function App() {
             <Footer />
           </Route>
 
-          <Route to="/orders" exact>
+          <Route exact path="/profile">
+            <Header />
+            <Profile />
+            <Footer />
+          </Route>
+
+          <Route exact path="/orders">
             <Header />
             <Orders />
             <Footer />

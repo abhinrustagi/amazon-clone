@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/Register.css";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../utils/firebase";
+import { auth, db } from "../utils/firebase";
 
 function Register() {
   const History = useHistory();
@@ -26,6 +26,17 @@ function Register() {
       .createUserWithEmailAndPassword(state.email, state.password)
       .then((auth) => {
         if (auth) {
+          const thisUser = auth.user;
+          db.collection("users")
+            .doc(thisUser?.uid)
+            .collection("userInformation")
+            .doc("ContactInfo")
+            .set({
+              email: state.email,
+              name: state.name,
+              phone: state.phone,
+              address: null,
+            });
           History.push("/");
         }
       })
@@ -44,7 +55,7 @@ function Register() {
         <h5>Name</h5>
         <input
           type="text"
-          class="input"
+          className="input"
           name="name"
           onChange={handleChange}
           value={state.name}
@@ -52,7 +63,7 @@ function Register() {
         <h5>Email Address</h5>
         <input
           type="email"
-          class="input"
+          className="input"
           name="email"
           value={state.email}
           onChange={handleChange}
@@ -60,7 +71,7 @@ function Register() {
         <h5>Password</h5>
         <input
           type="password"
-          class="input"
+          className="input"
           name="password"
           onChange={handleChange}
           value={state.password}
@@ -68,7 +79,7 @@ function Register() {
         <h5>Phone Number</h5>
         <input
           type="number"
-          class="input"
+          className="input"
           name="phone"
           onChange={handleChange}
           value={state.phone}
