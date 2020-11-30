@@ -31,3 +31,22 @@
 .profile h1 {
   margin-bottom: 15px;
 }
+
+.profile form {
+  margin: 15px 0;
+}
+
+.profile button {
+  margin: 10px 0;
+}
+
+.profile > input {
+  background-color: #fff;
+  height: 31px;
+  width: 100%;
+  padding: 3px 7px;
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}

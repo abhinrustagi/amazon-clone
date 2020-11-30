@@ -22,8 +22,8 @@ const CartItem = ({ title, image, price, rating, id, hideButton }) => {
       <div className="CartItem_info">
         <h3>{title}</h3>
         <p className="productPrice">
-          <small>₹</small>
-          <strong>{price.toFixed(2)}</strong>
+          {/* <small>₹</small> */}
+          <strong>${price.toFixed(2)}</strong>
         </p>
 
         <div className="productRating">

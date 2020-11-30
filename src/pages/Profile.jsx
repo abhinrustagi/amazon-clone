@@ -7,6 +7,21 @@ import { db } from "../utils/firebase";
 function Profile() {
   const [{ user }, dispatch] = useStateValue();
   const [profile, setProfile] = useState(null);
+  const [address, changeAddress] = useState({
+    address1: "",
+    address2: "",
+    address3: "",
+  });
+
+  const [visibility, changeVisibility] = useState("none");
+
+  const formVisibility = () => {
+    visibility === "none"
+      ? changeVisibility("block")
+      : changeVisibility("none");
+  };
+
+  const changeAddressSubmit = () => {};
 
   if (user) {
     db.collection("users")
@@ -49,10 +64,10 @@ function Profile() {
               {profile.address ? (
                 <div>
                   <p>profile.address</p>
-                  <button>Change Address</button>
+                  <button onClick={formVisibility}>Change Address</button>
                 </div>
               ) : (
-                <button>Add Address</button>
+                <button onClick={formVisibility}>Add Address</button>
               )}
             </div>
           </div>
@@ -62,10 +77,45 @@ function Profile() {
         </div>
       ) : (
         <p className="info">
-          You are not logged in. You can{" "}
-          <Link to="/login">login or register here.</Link>
+          You are not logged in. You can
+          <Link to="/login"> login or register here.</Link>
         </p>
       )}
+      <form
+        style={{
+          display: visibility,
+        }}
+        onSubmit={changeAddress}
+      >
+        <label htmlFor="address1">Address Line 1 : </label>
+        <input
+          type="text"
+          name="address1"
+          value={address.address1}
+          onChange={(e) =>
+            changeAddress({ ...address, address1: e.target.value })
+          }
+        />
+        <br /> <label htmlFor="address2">Address Line 2 : </label>
+        <input
+          type="text"
+          name="address2"
+          value={address.address2}
+          onChange={(e) =>
+            changeAddress({ ...address, address2: e.target.value })
+          }
+        />
+        <br /> <label htmlFor="address3">Address Line 3 : </label>
+        <input
+          type="text"
+          name="address3"
+          value={address.address3}
+          onChange={(e) =>
+            changeAddress({ ...address, address3: e.target.value })
+          }
+        />
+        <button>Update Profile Address</button>
+      </form>
     </div>
   );
 }

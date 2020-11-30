@@ -13,6 +13,26 @@ function Payment() {
   const history = useHistory();
   const [{ Cart, user }, dispatch] = useStateValue();
 
+  const [address, setAddress] = useState(null);
+
+  if (user) {
+    db.collection("users")
+      .doc(user?.uid)
+      .collection("userInformation")
+      .doc("ContactInfo")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setAddress(doc.data().address);
+        } else {
+          console.log("No data found");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   const stripe = useStripe();
   const elements = useElements();
   const [processing, setProcessing] = useState("");
@@ -95,8 +115,11 @@ function Payment() {
           </div>
           <div className="address">
             <p>{user?.email}</p>
-            <p>Address Line 1</p>
-            <p>Address Line 2</p>
+            {address ? (
+              address.map((line) => <p>{line}</p>)
+            ) : (
+              <p>Please add an address</p>
+            )}
           </div>
         </div>
 
