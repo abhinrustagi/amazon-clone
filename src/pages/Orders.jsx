@@ -22,6 +22,7 @@ function Orders() {
             }))
           )
         );
+      console.log(orders);
     } else {
       setOrders([]);
     }

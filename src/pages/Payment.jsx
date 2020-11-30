@@ -43,7 +43,15 @@ function Payment() {
           card: elements.getElement(CardElement),
         },
       })
-      .then(({ paymentIntent }) => {
+      .then((response) => {
+        var paymentIntent;
+        console.log(response);
+        if (response.error) {
+          paymentIntent = response.error.payment_intent;
+        } else {
+          paymentIntent = response.paymentIntent;
+        }
+        console.log(Cart, user, paymentIntent);
         db.collection("users")
           .doc(user?.uid)
           .collection("orders")
@@ -63,6 +71,9 @@ function Payment() {
         });
 
         history.replace("/orders");
+      })
+      .catch((response) => {
+        console.log(response);
       });
   };
 
@@ -117,29 +128,29 @@ function Payment() {
           <div className="payment_details">
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
+              <div className="payment_price">
+                <CurrencyFormat
+                  renderText={(value) => (
+                    <>
+                      <h3>Order Total: {value}</h3>
+                    </>
+                  )}
+                  decimalScale={2}
+                  value={getCartTotal(Cart)}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  // prefix={"₹"}
+                  prefix={"$"}
+                />
+                <button
+                  type="submit"
+                  disabled={processing || disabled || succeeded}
+                >
+                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                </button>
+              </div>
+              {error && <div>{error}</div>}
             </form>
-            <div className="payment_price">
-              <CurrencyFormat
-                renderText={(value) => (
-                  <>
-                    <h3>Order Total: {value}</h3>
-                  </>
-                )}
-                decimalScale={2}
-                value={getCartTotal(Cart)}
-                displayType={"text"}
-                thousandSeparator={true}
-                // prefix={"₹"}
-                prefix={"$"}
-              />
-              <button
-                type="submit"
-                disabled={processing || disabled || succeeded}
-              >
-                <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-              </button>
-            </div>
-            {error && <div>{error}</div>}
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import "./styles/CartItem.css";
 import { useStateValue } from "../utils/StateProvider";
 import StarIcon from "@material-ui/icons/Star";
 
-const CartItem = ({ title, image, price, rating, id }) => {
+const CartItem = ({ title, image, price, rating, id, hideButton }) => {
   const [{ Cart }, dispatch] = useStateValue();
 
   const removeFromCart = () => {
