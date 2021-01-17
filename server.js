@@ -1,11 +1,16 @@
-const express = require("express");
-const app = express();
+const app = require("express")();
 const cors = require("cors");
-require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
 app.use(cors({ origin: true }));
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello");
@@ -14,11 +19,13 @@ app.get("/", (req, res) => {
 app.post("/payments/create", async (req, res) => {
   const total = req.query.total;
   console.log("Payment request received.", total);
+
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total,
     currency: "usd",
     description: "Software Development Project",
   });
+
   var customer = await stripe.customers.create({
     name: "Jenny Rosen",
     address: {
@@ -29,6 +36,7 @@ app.post("/payments/create", async (req, res) => {
       country: "US",
     },
   });
+
   console.log(paymentIntent.client_secret);
   res.status(201).send({ clientSecret: paymentIntent.client_secret });
 });

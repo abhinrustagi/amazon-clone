@@ -9,6 +9,7 @@ import { Link, useHistory } from "react-router-dom";
 
 function Checkout() {
   const [{ Cart, user }, dispatch] = useStateValue();
+
   return (
     <div className="checkout">
       <div className="checkout_left">
