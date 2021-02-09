@@ -10,7 +10,10 @@ function Register() {
     password: "",
     name: "",
     phone: "",
+    password2: "",
   });
+
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -53,6 +56,7 @@ function Register() {
       </Link>
 
       <div className="login_container">
+        <p className="error">{error}</p>
         <h5>Name</h5>
         <input
           type="text"
@@ -74,6 +78,14 @@ function Register() {
           type="password"
           className="input"
           name="password"
+          onChange={handleChange}
+          value={state.password}
+        />
+        <h5>Confirm Password</h5>
+        <input
+          type="password"
+          className="input"
+          name="password2"
           onChange={handleChange}
           value={state.password}
         />

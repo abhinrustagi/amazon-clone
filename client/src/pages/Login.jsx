@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./styles/login.css";
 import { Link, useHistory } from "react-router-dom";
+
+// Firebase Auth
 import { auth } from "../utils/firebase";
 
 function Login() {

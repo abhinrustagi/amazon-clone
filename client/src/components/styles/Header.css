@@ -7,13 +7,14 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  justify-content: center;
 }
 
 .headerLogo {
   width: 100px;
   object-fit: contain;
   margin: 0 20px;
-  margin-top: 18px;
+  margin-top: 13px;
 }
 
 .headerSearch {
@@ -77,4 +78,45 @@
   display: flex;
   text-align: center;
   align-items: center;
+}
+
+.menu_icon {
+  display: none;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid #374045;
+  padding: 6px 6px 0;
+  height: 30px;
+  margin: auto 10px;
+}
+
+.left_side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right_side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.97;
+}
+
+@media (max-width: 576px) {
+  .header {
+    position: fixed;
+    width: 100vw;
+  }
+
+  .menu_icon {
+    display: block;
+  }
+  .right_side {
+    display: none;
+  }
+  .left_side {
+    width: 100%;
+  }
 }

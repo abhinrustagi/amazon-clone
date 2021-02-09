@@ -47,6 +47,7 @@ function Payment() {
         method: "post",
         url: `/payments/create?total=${getCartTotal(Cart) * 100}`,
       });
+
       setClientSecret(response.data.clientSecret);
     };
 
@@ -66,11 +67,13 @@ function Payment() {
       .then((response) => {
         var paymentIntent;
         console.log(response);
+
         if (response.error) {
           paymentIntent = response.error.payment_intent;
         } else {
           paymentIntent = response.paymentIntent;
         }
+
         console.log(Cart, user, paymentIntent);
         db.collection("users")
           .doc(user?.uid)

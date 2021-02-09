@@ -4,6 +4,7 @@ import "./styles/Home.css";
 import Product from "../components/Product";
 
 const img_Urls = [
+  "https://images-eu.ssl-images-amazon.com/images/G/31/prime/Gateway/2020/May/gaming_1500x600._CB431281464_.jpg",
   "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/CyberMonday/Fuji_TallHero_CM_v2_en_US_1x._CB414209152_.png",
   "https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg",
   "https://images-fe.ssl-images-amazon.com/images/G/35/kindle/merch/2020/bfcmpX83Kxq1/hero/pc_gw_xpl_bfcm_2_1x._CB416201492_.jpg",
