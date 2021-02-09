@@ -8,9 +8,9 @@ router.post("/updateAddress", checkAuthenticated, (req, res) => {
     { address: req.body.address },
     (err, docs) => {
       if (err) {
-        res.json("There was an error.");
+        res.json({ success: false, message: "There was an error." });
       } else {
-        res.json(docs);
+        res.json({ success: true, message: "Completed." });
       }
     }
   );

@@ -8,20 +8,18 @@ const User = require("../models/userModel");
 function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
     // const user = await getUserByEmail(email);
-    User.findOne({ email: email }, (err, user) => {
+    User.findOne({ email: email }, async (err, user) => {
       if (!err) {
         if (!user) {
           return done(null, false, { message: "No user with that email." });
         } else {
-          try {
-            if (bcrypt.compare(password, user.password)) {
-              return done(null, user);
-            } else {
-              return done(null, false, { message: "Password Incorrect" });
-            }
-          } catch (e) {
-            return done(e);
-          }
+          bcrypt
+            .compare(password, user.password)
+            .then((isValid) =>
+              isValid
+                ? done(null, user)
+                : done(null, false, { message: "Password Incorrect" })
+            );
         }
       } else {
         console.log(err);

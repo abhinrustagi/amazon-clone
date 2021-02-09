@@ -37,9 +37,9 @@ app.use(
     saveUninitialized: false,
   })
 );
-
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, "./client/build")));
 
 // mongoose connection
@@ -57,16 +57,17 @@ db.once("open", function () {
 });
 
 // routes
-app.get("/", (req, res) => {
-  res.sendFile("index.html");
-});
 
-app.use("/", authRoute);
+app.use("/auth", authRoute);
 
 app.use("/users", updateAddress);
 
 app.get("/hello", (req, res) => {
   res.send("hello");
+});
+
+app.get("/", (req, res) => {
+  res.sendFile("index.html");
 });
 
 // app.post("/payments/create", async (req, res) => {
