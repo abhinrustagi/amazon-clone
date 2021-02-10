@@ -7,7 +7,7 @@ import { getCartTotal } from "../utils/reducer";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import axios from "../utils/axios";
-import { db } from "../utils/firebase";
+// import { db } from "../utils/firebase";
 
 function Payment() {
   const history = useHistory();
@@ -16,21 +16,21 @@ function Payment() {
   const [address, setAddress] = useState(null);
 
   if (user) {
-    db.collection("users")
-      .doc(user?.uid)
-      .collection("userInformation")
-      .doc("ContactInfo")
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setAddress(doc.data().address);
-        } else {
-          console.log("No data found");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // db.collection("users")
+    //   .doc(user?.uid)
+    //   .collection("userInformation")
+    //   .doc("ContactInfo")
+    //   .get()
+    //   .then((doc) => {
+    //     if (doc.exists) {
+    //       setAddress(doc.data().address);
+    //     } else {
+    //       console.log("No data found");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   const stripe = useStripe();

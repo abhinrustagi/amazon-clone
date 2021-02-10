@@ -3,7 +3,7 @@ import "./styles/login.css";
 import { Link, useHistory } from "react-router-dom";
 
 // Firebase Auth
-import { auth } from "../utils/firebase";
+// import { auth } from "../utils/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,12 +13,12 @@ function Login() {
   const signIn = (e) => {
     e.preventDefault();
 
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((auth) => {
-        History.push("/");
-      })
-      .catch((err) => alert(err.message));
+    // auth
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then((auth) => {
+    //     History.push("/");
+    //   })
+    //   .catch((err) => alert(err.message));
   };
 
   return (

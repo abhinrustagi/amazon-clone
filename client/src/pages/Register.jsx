@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./styles/Register.css";
 import { Link, useHistory } from "react-router-dom";
-import { auth, db } from "../utils/firebase";
+// import { auth, db } from "../utils/firebase";
+import axios from "axios";
 
 function Register() {
   const History = useHistory();
@@ -13,7 +14,7 @@ function Register() {
     password2: "",
   });
 
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({ display: "none", text: "" });
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -23,27 +24,24 @@ function Register() {
     });
   };
 
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(state.email, state.password)
-      .then((auth) => {
-        if (auth) {
-          const thisUser = auth.user;
-          db.collection("users")
-            .doc(thisUser?.uid)
-            .collection("userInformation")
-            .doc("ContactInfo")
-            .set({
-              email: state.email,
-              name: state.name,
-              phone: state.phone,
-              address: null,
-            });
-          History.push("/");
-        }
+
+    await axios
+      .post("http://localhost:8888/auth/register", {
+        name: state.name,
+        email: state.email,
+        phone: state.phone,
+        password: state.password,
+        password2: state.password2,
       })
-      .catch((err) => alert(err.message));
+      .then((res) => {
+        if (res.data.error) {
+          setError({ ...error, display: "block", text: res.data.message });
+        } else {
+          History.push("/login");
+        }
+      });
   };
 
   return (
@@ -56,7 +54,6 @@ function Register() {
       </Link>
 
       <div className="login_container">
-        <p className="error">{error}</p>
         <h5>Name</h5>
         <input
           type="text"
@@ -97,7 +94,14 @@ function Register() {
           onChange={handleChange}
           value={state.phone}
         />
-
+        <p
+          className="error"
+          style={{
+            display: error.display,
+          }}
+        >
+          {error.text}
+        </p>
         <button onClick={register}>Continue</button>
       </div>
     </div>

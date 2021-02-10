@@ -33,7 +33,7 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       },
     });
   } else {
-    res.json({ ...check });
+    res.json({ ...check, error: 1 });
   }
 });
 

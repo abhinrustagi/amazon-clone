@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles/profile.css";
 import { useStateValue } from "../utils/StateProvider";
 import { Link } from "react-router-dom";
-import { db } from "../utils/firebase";
+// import { db } from "../utils/firebase";
 
 function Profile() {
   const [{ user }, dispatch] = useStateValue();
@@ -24,21 +24,21 @@ function Profile() {
   const changeAddressSubmit = () => {};
 
   if (user) {
-    db.collection("users")
-      .doc(user?.uid)
-      .collection("userInformation")
-      .doc("ContactInfo")
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setProfile(doc.data());
-        } else {
-          console.log("No data found");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // db.collection("users")
+    //   .doc(user?.uid)
+    //   .collection("userInformation")
+    //   .doc("ContactInfo")
+    //   .get()
+    //   .then((doc) => {
+    //     if (doc.exists) {
+    //       setProfile(doc.data());
+    //     } else {
+    //       console.log("No data found");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   return (

@@ -4,7 +4,7 @@ import "./styles/Header.css";
 import axios from "axios";
 
 import { useStateValue } from "../utils/StateProvider.js";
-import { auth } from "../utils/firebase";
+// import { auth } from "../utils/firebase";
 import { Link } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
@@ -16,9 +16,9 @@ function Header() {
   const [{ Cart, user }, dispatch] = useStateValue();
 
   const handleAuth = () => {
-    if (user) {
-      auth.signOut();
-    }
+    // if (user) {
+    //   auth.signOut();
+    // }
   };
 
   return (
