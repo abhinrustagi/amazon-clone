@@ -16,9 +16,10 @@ function Header() {
   const [{ Cart, user }, dispatch] = useStateValue();
 
   const handleAuth = () => {
-    // if (user) {
-    //   auth.signOut();
-    // }
+    if (user) {
+      dispatch({ type: "SET_USER", user: null });
+      axios.post("http://localhost:8888/auth/logout");
+    }
   };
 
   return (

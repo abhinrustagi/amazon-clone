@@ -5,6 +5,7 @@ const passport = require("passport");
 const checkNotAuthenticated = require("./checkNotAuthenticated");
 const jwt = require("jsonwebtoken");
 const checkUserValid = require("./newProfileCheck");
+const checkAuthenticated = require("./checkAuthenticated");
 
 require("dotenv").config({ path: "../../" });
 
@@ -48,7 +49,12 @@ router.post("/login", checkNotAuthenticated, async (req, res) => {
           res.json({ err, success: false });
         } else {
           jwt.sign(
-            { ...user },
+            {
+              email: user.email,
+              name: user.name,
+              address: user.address,
+              phone: user.phone,
+            },
             process.env.JWT_SECRET,
             {
               expiresIn: 31556926, // 1 year in seconds
@@ -66,6 +72,10 @@ router.post("/login", checkNotAuthenticated, async (req, res) => {
       res.json({ success: false, message: "Password Incorrect" });
     }
   })(req, res);
+});
+
+router.post("/logout", checkAuthenticated, async (req, res) => {
+  req.logout();
 });
 
 router.get("/login", checkNotAuthenticated, async (req, res) => {});

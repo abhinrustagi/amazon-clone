@@ -1,27 +1,46 @@
 import React, { useState } from "react";
 import "./styles/login.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import axios from "axios";
+import { useStateValue } from "../utils/StateProvider";
+import decoder from "jwt-decode";
 
 // Firebase Auth
 // import { auth } from "../utils/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
+
+  const [{ user }, dispatch] = useStateValue();
+
   const History = useHistory();
 
   const signIn = (e) => {
     e.preventDefault();
 
-    // auth
-    //   .signInWithEmailAndPassword(email, password)
-    //   .then((auth) => {
-    //     History.push("/");
-    //   })
-    //   .catch((err) => alert(err.message));
+    axios
+      .post("http://localhost:8888/auth/login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        const data = decoder(res.data.token);
+        dispatch({
+          type: "SET_USER",
+          user: {
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+            address: data.address,
+          },
+        });
+        History.push("/");
+      });
   };
 
-  return (
+  return !user ? (
     <div className="login">
       <Link to="/" className="login_logo">
         <img
@@ -66,6 +85,8 @@ function Login() {
         </Link>
       </div>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 }
 

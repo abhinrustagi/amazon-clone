@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./styles/Register.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 // import { auth, db } from "../utils/firebase";
+import { useStateValue } from "../utils/StateProvider";
 import axios from "axios";
 
 function Register() {
+  const [{ user }, dispatch] = useStateValue();
+
   const History = useHistory();
+
   const [state, changeState] = useState({
     email: "",
     password: "",
@@ -14,7 +18,7 @@ function Register() {
     password2: "",
   });
 
-  const [error, setError] = useState({ display: "none", text: "" });
+  const [error, setError] = useState({ display: "none", text: null });
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,24 +31,49 @@ function Register() {
   const register = async (e) => {
     e.preventDefault();
 
-    await axios
-      .post("http://localhost:8888/auth/register", {
-        name: state.name,
-        email: state.email,
-        phone: state.phone,
-        password: state.password,
-        password2: state.password2,
-      })
-      .then((res) => {
-        if (res.data.error) {
-          setError({ ...error, display: "block", text: res.data.message });
-        } else {
-          History.push("/login");
-        }
+    // form validation
+    if (
+      state.password.length === 0 ||
+      state.name.length === 0 ||
+      state.email.length === 0 ||
+      state.phone.length === 0 ||
+      state.password2.length === 0
+    ) {
+      setError({
+        ...error,
+        display: "block",
+        text: "One or more fields empty.",
       });
+    }
+    if (state.password !== state.password2) {
+      setError({ ...error, display: "block", text: "Passwords must match." });
+    } else if (state.phone.length < 10 || state.phone.length > 10) {
+      setError({
+        ...error,
+        display: "block",
+        text: "Phone Number must be 10 digits.",
+      });
+    } else {
+      await axios
+        .post("http://localhost:8888/auth/register", {
+          name: state.name,
+          email: state.email,
+          phone: state.phone,
+          password: state.password,
+          password2: state.password2,
+        })
+        .then((res) => {
+          if (res.data.error) {
+            setError({ ...error, display: "block", text: res.data.message });
+          } else {
+            dispatch({ type: "SET_USER", user: res.data.user });
+            History.push("/");
+          }
+        });
+    }
   };
 
-  return (
+  return !user ? (
     <div className="registerPage">
       <Link to="/" className="login_logo">
         <img
@@ -84,7 +113,7 @@ function Register() {
           className="input"
           name="password2"
           onChange={handleChange}
-          value={state.password}
+          value={state.password2}
         />
         <h5>Phone Number</h5>
         <input
@@ -105,6 +134,8 @@ function Register() {
         <button onClick={register}>Continue</button>
       </div>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 }
 

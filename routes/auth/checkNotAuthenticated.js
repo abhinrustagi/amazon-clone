@@ -1,6 +1,7 @@
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return { message: "Logged In" };
+    console.log("Yes");
+    res.json({ message: "Logged In" });
   }
   next();
 }
