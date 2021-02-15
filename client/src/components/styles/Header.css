@@ -8,6 +8,7 @@
   top: 0;
   z-index: 100;
   justify-content: center;
+  position: relative;
 }
 
 .headerLogo {
@@ -85,9 +86,11 @@
   color: white;
   border-radius: 3px;
   border: 1px solid #374045;
-  padding: 6px 6px 0;
+  padding: 4px 6px 6px;
   height: 30px;
   margin: auto 10px;
+  background: none;
+  width: 50px;
 }
 
 .left_side {
@@ -118,5 +121,6 @@
   }
   .left_side {
     width: 100%;
+    justify-content: center;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/Header.css";
 
 import axios from "axios";
@@ -32,13 +32,9 @@ function Header() {
             alt="..."
           />
         </Link>
-
-        <div className="menu_icon">
-          <MenuIcon />
-        </div>
       </div>
       <div className="right_side">
-        <div className="headerOption">
+        <div className="headerOption deliver_to">
           <span className="headerOption_Line1">Deliver to</span>
           <span className="headerOption_DeliverTo_SecondLine">
             <LocationOnIcon />
