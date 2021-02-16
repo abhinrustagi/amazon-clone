@@ -11,7 +11,7 @@ import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 
-import { auth } from "./utils/firebase";
+// import { auth } from "./utils/firebase";
 import { useStateValue } from "./utils/StateProvider.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -21,16 +21,16 @@ const promise = loadStripe(
 );
 
 function App() {
-  const [{}, dispatch] = useStateValue();
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        dispatch({ type: "SET_USER", user: authUser });
-      } else {
-        dispatch({ type: "SET_USER", user: null });
-      }
-    });
-  }, []);
+  // const [{}, dispatch] = useStateValue();
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       dispatch({ type: "SET_USER", user: authUser });
+  //     } else {
+  //       dispatch({ type: "SET_USER", user: null });
+  //     }
+  //   });
+  // }, []);
 
   return (
     <Router>

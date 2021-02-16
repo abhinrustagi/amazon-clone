@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const mongooseFuzzySearching = require("mongoose-fuzzy-searching");
 
 const productSchema = new Schema({
   name: String,
@@ -7,5 +8,7 @@ const productSchema = new Schema({
   img: String,
   rating: Number,
 });
+
+productSchema.plugin(mongooseFuzzySearching, { fields: ["name"] });
 
 module.exports = mongoose.model("product", productSchema, "product");

@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import { getCartTotal } from "../utils/reducer";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
-import axios from "../utils/axios";
+// import axios from "../utils/axios";
 // import { db } from "../utils/firebase";
 
 function Payment() {
@@ -41,18 +41,18 @@ function Payment() {
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
 
-  useEffect(() => {
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-        url: `/payments/create?total=${getCartTotal(Cart) * 100}`,
-      });
+  // useEffect(() => {
+  //   const getClientSecret = async () => {
+  //     const response = await axios({
+  //       method: "post",
+  //       url: `/payments/create?total=${getCartTotal(Cart) * 100}`,
+  //     });
 
-      setClientSecret(response.data.clientSecret);
-    };
+  //     setClientSecret(response.data.clientSecret);
+  //   };
 
-    getClientSecret();
-  }, [Cart]);
+  //   getClientSecret();
+  // }, [Cart]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
