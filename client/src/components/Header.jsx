@@ -1,25 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Header.css";
 
 import axios from "axios";
 
 import { useStateValue } from "../utils/StateProvider.js";
-// import { auth } from "../utils/firebase";
 import { Link } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import MenuIcon from "@material-ui/icons/Menu";
+// import MenuIcon from "@material-ui/icons/Menu";
 
 function Header() {
   const [{ Cart, user }, dispatch] = useStateValue();
+
+  const [searchResults, setSearchResults] = useState([]);
+  const [input, setInput] = useState(null);
 
   const handleAuth = () => {
     if (user) {
       dispatch({ type: "SET_USER", user: null });
       axios.post("http://localhost:8888/auth/logout");
     }
+  };
+
+  useEffect(async () => {
+    if (input !== null) {
+      await axios
+        .post("http://localhost:8888/products/search", { query: input })
+        .then((res) => {
+          if (res.data.results.length >= 1) {
+            setSearchResults(res.data.results);
+          } else {
+            setSearchResults([{ name: "No Results found." }]);
+          }
+        });
+    }
+  }, [input]);
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
   };
 
   return (
@@ -43,8 +63,28 @@ function Header() {
         </div>
 
         <div className="headerSearch">
-          <input className="headerSearchInput" type="text" />
+          <input
+            onChange={handleInput}
+            onBlur={() => {
+              setSearchResults([]);
+              setInput(null);
+            }}
+            className="headerSearchInput"
+            type="text"
+            name="search"
+            value={input}
+            autoComplete="off"
+          />
           <SearchIcon className="headerSearchIcon" />
+          {searchResults.length ? (
+            <div className="results">
+              {searchResults.map((term) => (
+                <div className="result__option">
+                  <p>{term.name}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <div className="headerNav">

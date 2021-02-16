@@ -21,6 +21,7 @@ initializePassport(passport);
 const authRoute = require("./routes/auth/auth");
 const updateAddress = require("./routes/user functions/updateAddress");
 const paymentRouter = require("./paytm/paytm");
+const productsRouter = require("./routes/products/getProducts");
 
 // express middlewares
 app.use(cors({ origin: true }));
@@ -64,6 +65,8 @@ app.use("/auth", authRoute);
 app.use("/users", updateAddress);
 
 app.use("/payment", paymentRouter);
+
+app.use("/products", productsRouter);
 
 app.get("/hello", (req, res) => {
   res.send("hello");

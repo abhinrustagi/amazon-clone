@@ -131,7 +131,9 @@ function Register() {
         >
           {error.text}
         </p>
-        <button onClick={register}>Continue</button>
+        <button type="submit" onClick={register}>
+          Continue
+        </button>
       </div>
     </div>
   ) : (

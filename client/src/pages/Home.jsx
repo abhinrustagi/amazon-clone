@@ -1,78 +1,146 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Home.css";
+
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import Product from "../components/Product";
 
-const img_Urls = [
+import axios from "axios";
+
+const img_urls = [
+  "https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonDevices/PSW/V2.PSW_DesktopMaster_1500x600-Prime._CB413743016_.jpg",
+  "https://images-eu.ssl-images-amazon.com/images/G/31/prime/AugustShopping_Week_1500x600._CB406224931_.jpg",
   "https://images-eu.ssl-images-amazon.com/images/G/31/prime/Gateway/2020/May/gaming_1500x600._CB431281464_.jpg",
-  "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2020/CyberMonday/Fuji_TallHero_CM_v2_en_US_1x._CB414209152_.png",
   "https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg",
-  "https://images-fe.ssl-images-amazon.com/images/G/35/kindle/merch/2020/bfcmpX83Kxq1/hero/pc_gw_xpl_bfcm_2_1x._CB416201492_.jpg",
 ];
 
 function Home() {
+  const [slide, setSlide] = useState(0);
+
+  const length = img_urls.length;
+
+  const [products, setProducts] = useState(null);
+
+  const nextSlide = () => {
+    setSlide(slide === length - 1 ? 0 : slide + 1);
+  };
+
+  const prevSlide = () => {
+    setSlide(slide === 0 ? length - 1 : slide - 1);
+  };
+
+  useEffect(async () => {
+    await axios.get("http://localhost:8888/products/home").then((res) => {
+      setProducts(res.data.sample);
+    });
+  }, []);
+
   return (
     <div className="home">
       <div className="homeContainer">
-        <img
-          src={img_Urls[Math.floor(Math.random() * img_Urls.length)]}
-          alt=""
-          className="bannerImage"
-        />
+        <div className="slider">
+          <div className="left_icon">
+            <ChevronLeftIcon onClick={prevSlide} />
+          </div>
+          <div className="right_icon">
+            <ChevronRightIcon onClick={nextSlide} />
+          </div>
+          {img_urls.map((img, index) => (
+            <div
+              className={index === slide ? "slide active" : "slide"}
+              key={index}
+            >
+              {index === slide && (
+                <img src={img} alt="amazon" className="slide_image" />
+              )}
+            </div>
+          ))}
+        </div>
 
         <div className="homeRow">
           <Product
-            title="Sony PS4 1TB Slim Console with Additional Dualshock Controller & God of War (PS4) "
-            image="https://images-na.ssl-images-amazon.com/images/I/81vP3wTlRoL._SL1500_.jpg"
-            price={499.0}
-            rating={4}
-            id={456}
+            title={products ? products[0].name : "Loading"}
+            image={
+              products
+                ? products[0].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[0].price : 0}
+            rating={products ? products[0].rating : 0}
+            id={products ? products[0]._id : 0}
           />
           <Product
-            title="Fire TV Stick with Alexa Voice Remote (includes TV controls) | Stream HD Quality Video with Dolby Atmos Audio"
-            image="https://images-na.ssl-images-amazon.com/images/I/51Tbwd2PaDL._SL1000_.jpg"
-            price={399.99}
-            id={5456}
-            rating={3}
+            title={products ? products[1].name : ""}
+            image={
+              products
+                ? products[1].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[1].price : 0}
+            rating={products ? products[1].rating : 0}
+            id={products ? products[1]._id : 0}
           />
         </div>
 
         <div className="homeRow">
           <Product
-            title="iPhone X 128 GB Space Gray"
-            price={799.0}
-            rating={4}
-            id={3456}
-            image="https://www.freeiconspng.com/thumbs/iphone-x-pictures/apple-iphone-x-pictures-5.png"
+            title={products ? products[2].name : ""}
+            image={
+              products
+                ? products[2].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[2].price : 0}
+            rating={products ? products[2].rating : 0}
+            id={products ? products[2]._id : 0}
           />
           <Product
-            title="Wildcraft 65 ltrs Green Hiking Backpack (Gangotri Plus Green)"
-            price={199.5}
-            id={2456}
-            rating={3}
-            image="https://images-na.ssl-images-amazon.com/images/I/91mVoMhPlmL._SL1500_.jpg"
+            title={products ? products[3].name : ""}
+            image={
+              products
+                ? products[3].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[3].price : 0}
+            rating={products ? products[3].rating : 0}
+            id={products ? products[3]._id : 0}
           />
           <Product
-            title="The Hitman: The Rohit Sharma Story Paperback"
-            image="https://images-na.ssl-images-amazon.com/images/I/51oBkcJvDRL._SX326_BO1,204,203,200_.jpg"
-            price={48.9}
-            id={4356}
-            rating={4}
+            title={products ? products[4].name : ""}
+            image={
+              products
+                ? products[4].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[4].price : 0}
+            rating={products ? products[4].rating : 0}
+            id={products ? products[4]._id : 0}
           />
         </div>
 
         <div className="homeRow">
           <Product
-            title="New Apple MacBook Pro (13-inch, 8GB RAM, 512GB SSD, 1.4GHz Quad-core 8th-Generation Intel Core i5 Processor, Magic Keyboard) - Space Grey"
-            price={1699.99}
-            id={4546}
-            image="https://images-na.ssl-images-amazon.com/images/I/71YRSVXhgQL._SL1500_.jpg"
+            title={products ? products[5].name : ""}
+            image={
+              products
+                ? products[5].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[5].price : 0}
+            rating={products ? products[5].rating : 0}
+            id={products ? products[5]._id : 0}
           />
           <Product
-            title="Nike Men's Regular Fit T-Shirt "
-            price={290.4}
-            id={4565}
-            image="https://images-na.ssl-images-amazon.com/images/I/81HKxM07U7L._UL1500_.jpg"
+            title={products ? products[6].name : ""}
+            image={
+              products
+                ? products[6].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[6].price : 0}
+            rating={products ? products[6].rating : 0}
+            id={products ? products[6]._id : 0}
           />
         </div>
       </div>
