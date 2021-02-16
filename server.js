@@ -68,38 +68,9 @@ app.use("/payment", paymentRouter);
 
 app.use("/products", productsRouter);
 
-app.get("/hello", (req, res) => {
-  res.send("hello");
-});
-
 app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
-
-// app.post("/payments/create", async (req, res) => {
-//   const total = req.query.total;
-//   console.log("Payment request received.", total);
-
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: total,
-//     currency: "usd",
-//     description: "Software Development Project",
-//   });
-
-//   var customer = await stripe.customers.create({
-//     name: "Jenny Rosen",
-//     address: {
-//       line1: "510 Townsend St",
-//       postal_code: "98140",
-//       city: "San Francisco",
-//       state: "CA",
-//       country: "US",
-//     },
-//   });
-
-//   console.log(paymentIntent.client_secret);
-//   res.status(201).send({ clientSecret: paymentIntent.client_secret });
-// });
 
 app.listen(process.env.PORT || 8888, () => {
   console.log("Server started on port.");
