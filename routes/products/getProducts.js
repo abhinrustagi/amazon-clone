@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Product = require("../../models/productModel");
 
 router.get("/home", (req, res) => {
-  Product.aggregate([{ $sample: { size: 7 } }], (err, sample) => {
+  Product.aggregate([{ $sample: { size: 9 } }], (err, sample) => {
     if (err) {
       res.json({ error: 1, message: "Error connecting to the database." });
     } else {

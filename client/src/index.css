@@ -38,3 +38,10 @@ button {
 hr {
   margin: 15px 0;
 }
+
+.App,
+#root,
+body,
+html {
+  height: 100%;
+}

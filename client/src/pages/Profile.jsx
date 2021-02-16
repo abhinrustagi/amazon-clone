@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import "./styles/profile.css";
 import { useStateValue } from "../utils/StateProvider";
-import { Link } from "react-router-dom";
-// import { db } from "../utils/firebase";
+import { Link, Redirect } from "react-router-dom";
 
 function Profile() {
   const [{ user }, dispatch] = useStateValue();
-  const [profile, setProfile] = useState(null);
   const [address, changeAddress] = useState({
     address1: "",
     address2: "",
@@ -41,46 +39,40 @@ function Profile() {
     //   });
   }
 
-  return (
+  return user ? (
     <div className="profile">
-      <h1>Hello, {profile?.name}</h1>
-      {profile ? (
-        <div className="profile_table">
-          <div className="segment">
-            <div className="profile_left">Full Name</div>
-            <div className="profile_right">{profile?.name}</div>
-          </div>
-          <div className="segment">
-            <div className="profile_left">Email Address</div>
-            <div className="profile_right">{profile?.email}</div>
-          </div>
-          <div className="segment">
-            <div className="profile_left">Phone Number</div>
-            <div className="profile_right">{profile?.phone}</div>
-          </div>
-          <div className="segment">
-            <div className="profile_left">Address</div>
-            <div className="profile_right">
-              {profile.address ? (
-                <div>
-                  <p>profile.address</p>
-                  <button onClick={formVisibility}>Change Address</button>
-                </div>
-              ) : (
-                <button onClick={formVisibility}>Add Address</button>
-              )}
-            </div>
-          </div>
-          <div>
-            <Link to="/orders">View your orders here.</Link>
+      <h1>Hello, {user?.name}</h1>
+      <div className="profile_table">
+        <div className="segment">
+          <div className="profile_left">Full Name</div>
+          <div className="profile_right">{user?.name}</div>
+        </div>
+        <div className="segment">
+          <div className="profile_left">Email Address</div>
+          <div className="profile_right">{user?.email}</div>
+        </div>
+        <div className="segment">
+          <div className="profile_left">Phone Number</div>
+          <div className="profile_right">{user?.phone}</div>
+        </div>
+        <div className="segment">
+          <div className="profile_left">Address</div>
+          <div className="profile_right">
+            {user.address ? (
+              <div>
+                <p>profile.address</p>
+                <button onClick={formVisibility}>Change Address</button>
+              </div>
+            ) : (
+              <button onClick={formVisibility}>Add Address</button>
+            )}
           </div>
         </div>
-      ) : (
-        <p className="info">
-          You are not logged in. You can
-          <Link to="/login"> login or register here.</Link>
-        </p>
-      )}
+        <div>
+          <Link to="/orders">View your orders here.</Link>
+        </div>
+      </div>
+      )
       <form
         style={{
           display: visibility,
@@ -117,6 +109,8 @@ function Profile() {
         <button>Update Profile Address</button>
       </form>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 }
 

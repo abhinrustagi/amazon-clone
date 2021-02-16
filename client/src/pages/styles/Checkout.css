@@ -8,6 +8,8 @@
   padding: 15px;
   background-color: white;
   height: max-content;
+  max-width: 1500px;
+  margin: auto;
 }
 
 .checkout_title {

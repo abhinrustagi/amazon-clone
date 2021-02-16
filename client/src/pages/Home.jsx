@@ -71,6 +71,17 @@ function Home() {
             id={products ? products[0]._id : 0}
           />
           <Product
+            title={products ? products[7].name : "Loading"}
+            image={
+              products
+                ? products[7].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[7].price : 0}
+            rating={products ? products[7].rating : 0}
+            id={products ? products[7]._id : 0}
+          />
+          <Product
             title={products ? products[1].name : ""}
             image={
               products
@@ -130,6 +141,17 @@ function Home() {
             price={products ? products[5].price : 0}
             rating={products ? products[5].rating : 0}
             id={products ? products[5]._id : 0}
+          />
+          <Product
+            title={products ? products[8].name : ""}
+            image={
+              products
+                ? products[8].img
+                : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            }
+            price={products ? products[8].price : 0}
+            rating={products ? products[8].rating : 0}
+            id={products ? products[8]._id : 0}
           />
           <Product
             title={products ? products[6].name : ""}
