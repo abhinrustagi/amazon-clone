@@ -103,12 +103,13 @@ function Header() {
             </div>
           </Link>
 
-          <Link to="/profile">
-            <div className="headerOption">
-              <span className="headerOption_Line1">Your</span>Profile
-            </div>
-          </Link>
-
+          {user ? (
+            <Link to="/profile">
+              <div className="headerOption">
+                <span className="headerOption_Line1">Your</span>Profile
+              </div>
+            </Link>
+          ) : null}
           <Link to="/checkout">
             <div className="headerOption headerOptionCart">
               <ShoppingCartIcon />
