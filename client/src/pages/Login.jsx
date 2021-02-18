@@ -68,7 +68,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             name="password"
           />
-          <button onClick={signIn} type="submit">
+          <button className="amazon_button" onClick={signIn} type="submit">
             Continue
           </button>
         </form>

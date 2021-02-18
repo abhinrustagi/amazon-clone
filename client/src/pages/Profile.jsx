@@ -11,16 +11,6 @@ function Profile() {
     address3: "",
   });
 
-  const [visibility, changeVisibility] = useState("none");
-
-  const formVisibility = () => {
-    visibility === "none"
-      ? changeVisibility("block")
-      : changeVisibility("none");
-  };
-
-  const changeAddressSubmit = () => {};
-
   if (user) {
     // db.collection("users")
     //   .doc(user?.uid)

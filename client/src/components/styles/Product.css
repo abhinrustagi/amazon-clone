@@ -32,7 +32,7 @@
   font-size: 1.1rem;
 }
 
-.product > button {
+.product > .amazon_button {
   display: flex;
   align-items: center;
   background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
@@ -51,4 +51,34 @@
 
 .productTitle {
   font-size: 1.3rem;
+}
+
+.product > .buy_now_button {
+  background-color: #f1b367;
+  margin: 0;
+  padding: 7px 30px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+.product > .buy_now_button:hover {
+  background-color: #e18513;
+}
+
+.add_to_wishlist {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  color: #374045;
+  cursor: pointer;
+}
+
+.add_to_wishlist:hover {
+  color: black;
+  text-decoration: underline;
 }

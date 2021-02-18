@@ -2,6 +2,7 @@ import React from "react";
 import "./styles/Product.css";
 import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import { useStateValue } from "../utils/StateProvider";
 
 function Product({ id, title, price, image, rating }) {
@@ -40,9 +41,15 @@ function Product({ id, title, price, image, rating }) {
 
       <img src={image} alt="..." />
 
-      <button onClick={addToCart}>
-        Add to Cart <ShoppingCartIcon style={{ marginLeft: "5px" }} />
+      <button className="amazon_button" onClick={addToCart}>
+        <ShoppingCartIcon style={{ marginRight: "5px" }} />
+        Add to Cart
       </button>
+      <button className="buy_now_button">
+        <PlayArrowIcon style={{ marginRight: "5px" }} />
+        Buy Now
+      </button>
+      <span className="add_to_wishlist">Add to Wishlist</span>
     </div>
   );
 }
