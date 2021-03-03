@@ -16,6 +16,8 @@ import { useStateValue } from "./utils/StateProvider.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
+import Cookies from "js-cookie";
+
 const promise = loadStripe(
   "pk_test_51Ht8elBxnpb4clRfmRI1KWdjrE0z5IZgDeOOhC8e0WWFeKP7B18rnFVFf2CbUl21uYIwwuBXvWxLxiayVXhdvKsB00q7EcH5g6"
 );
@@ -31,6 +33,15 @@ function App() {
   //     }
   //   });
   // }, []);
+
+  useEffect(() => {
+    const localUser = Cookies.get("thisUser");
+    if (localUser) {
+      console.log("Found");
+    } else {
+      console.log("Not found.");
+    }
+  }, []);
 
   return (
     <Router>
