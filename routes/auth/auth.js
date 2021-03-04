@@ -49,12 +49,7 @@ router.post("/login", checkNotAuthenticated, async (req, res) => {
           res.json({ err, success: false });
         } else {
           jwt.sign(
-            {
-              email: user.email,
-              name: user.name,
-              address: user.address,
-              phone: user.phone,
-            },
+            user,
             process.env.JWT_SECRET,
             {
               expiresIn: 31556926, // 1 year in seconds

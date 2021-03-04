@@ -12,15 +12,23 @@ router.get("/home", (req, res) => {
 });
 
 router.post("/search", async (req, res) => {
-  await Product.fuzzySearch(req.body.query).then((products) => {
-    if (products) {
-      res.json({ message: "Successful", error: 0, results: products.slice(5) });
-    } else {
+  await Product.fuzzySearch(req.body.query, "name", (err, products) => {
+    if (err) {
       res.json({
-        message: "Successful",
-        error: 0,
-        results: [{ name: "No results found." }],
+        message: "Error connecting to the database.",
+        error: 1,
+        results: [{ name: "Error Connecting to the database." }],
       });
+    } else {
+      if (products) {
+        res.json({ message: "Successful", error: 0, results: products });
+      } else {
+        res.json({
+          message: "Successful",
+          error: 0,
+          results: [{ name: "No results found." }],
+        });
+      }
     }
   });
 });

@@ -24,22 +24,30 @@ function Header() {
     }
   };
 
-  useEffect(async () => {
-    if (input !== null) {
-      await axios
-        .post("http://localhost:8888/products/search", { query: input })
-        .then((res) => {
-          if (res.data.results.length >= 1) {
-            setSearchResults(res.data.results);
-          } else {
-            setSearchResults([{ name: "No Results found." }]);
-          }
-        });
+  useEffect(() => {
+    async function getData() {
+      if (input !== null) {
+        await axios
+          .post("http://localhost:8888/products/search", { query: input })
+          .then((res) => {
+            if (res.data.results.length >= 1) {
+              setSearchResults(res.data.results);
+            } else {
+              setSearchResults([{ name: "No Results found." }]);
+            }
+          });
+      }
     }
+
+    getData();
   }, [input]);
 
   const handleInput = (e) => {
     setInput(e.target.value);
+  };
+
+  const openSearch = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -79,13 +87,20 @@ function Header() {
             name="search"
             value={input}
             autoComplete="off"
+            onSubmit={openSearch}
           />
           <SearchIcon className="headerSearchIcon" />
           {searchResults.length ? (
             <div className="results">
               {searchResults.map((term) => (
                 <div className="result__option">
-                  <p>{term.name}</p>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`/products/${term._id}`}
+                  >
+                    <p>{term.name}</p>
+                  </a>
                 </div>
               ))}
             </div>

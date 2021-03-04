@@ -24,6 +24,7 @@
   align-items: center;
   border-radius: 24px;
   position: relative;
+  z-index: 3;
 }
 
 .headerSearchIcon {
@@ -38,6 +39,8 @@
   border: none;
   width: 100%;
   font-size: 1rem;
+  position: relative;
+  z-index: 3;
 }
 
 .headerOption {

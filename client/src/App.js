@@ -15,6 +15,7 @@ import Payment from "./pages/Payment";
 import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
+import ProductPage from "./pages/Product";
 
 // import { auth } from "./utils/firebase";
 import { useStateValue } from "./utils/StateProvider.js";
@@ -92,6 +93,8 @@ function App() {
             <Orders />
             <Footer />
           </Route>
+
+          <Route exact path="/products/id" component={ProductPage} />
         </Switch>
       </div>
     </Router>

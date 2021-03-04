@@ -22,7 +22,12 @@ function initialize(passport) {
             .compare(password, user.password)
             .then((isValid) =>
               isValid
-                ? done(null, user)
+                ? done(null, {
+                    name: user.name,
+                    email: user.email,
+                    address: user.address,
+                    phone: user.phone,
+                  })
                 : done(null, false, { message: "Password Incorrect" })
             );
         }
