@@ -4,12 +4,11 @@ const cryptojs = require("crypto-js");
 // const getUserByEmail = require("./getUser");
 const getUserByID = require("./getUserById");
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
 
 const JWTStrategy = require("passport-jwt").Strategy,
   ExtractJWT = require("passport-jwt").ExtractJwt;
 
-require("dotenv").config({ path: "../" });
+require("dotenv").config({ path: "../.env" });
 
 function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
@@ -33,25 +32,25 @@ function initialize(passport) {
     });
   };
 
-  const opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("JWT"),
-    secret: process.env.JWT_SECRET,
-  };
+  // const opts = {
+  //   jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("JWT"),
+  //   secret: process.env.JWT_SECRET,
+  // };
 
-  passport.use(
-    "jwt",
-    new JWTStrategy(opts, (jwt_payload, done) => {
-      User.findOne({ email: jwt_payload.email }, (err, user) => {
-        if (err) {
-          done(null, false);
-        } else {
-          if (user) {
-            console.log(user);
-          }
-        }
-      });
-    })
-  );
+  // passport.use(
+  //   "jwt",
+  //   new JWTStrategy(opts, (jwt_payload, done) => {
+  //     User.findOne({ email: jwt_payload.email }, (err, user) => {
+  //       if (err) {
+  //         done(null, false);
+  //       } else {
+  //         if (user) {
+  //           console.log(user);
+  //         }
+  //       }
+  //     });
+  //   })
+  // );
 
   passport.use(
     new LocalStrategy(

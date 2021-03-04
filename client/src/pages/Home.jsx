@@ -9,6 +9,7 @@ import Product from "../components/Product";
 import axios from "axios";
 
 const img_urls = [
+  "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg",
   "https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonDevices/PSW/V2.PSW_DesktopMaster_1500x600-Prime._CB413743016_.jpg",
   "https://images-eu.ssl-images-amazon.com/images/G/31/prime/AugustShopping_Week_1500x600._CB406224931_.jpg",
   "https://images-eu.ssl-images-amazon.com/images/G/31/prime/Gateway/2020/May/gaming_1500x600._CB431281464_.jpg",
@@ -31,9 +32,16 @@ function Home() {
   };
 
   useEffect(async () => {
-    await axios.get("http://localhost:8888/products/home").then((res) => {
-      setProducts(res.data.sample);
-    });
+    await axios
+      .get("http://localhost:8888/products/home")
+      .then((res) => {
+        setProducts(res.data.sample);
+      })
+      .catch((err) => {
+        alert(
+          "Cannot establish connection to the database. Please try again later."
+        );
+      });
   }, []);
 
   return (

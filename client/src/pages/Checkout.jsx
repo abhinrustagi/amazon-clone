@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles/Checkout.css";
 
 import Subtotal from "../components/Subtotal";
@@ -9,6 +9,13 @@ import { Link, useHistory } from "react-router-dom";
 
 function Checkout() {
   const [{ Cart, user }, dispatch] = useStateValue();
+  const History = useHistory();
+
+  useEffect(() => {
+    if (Cart.length === 0) {
+      History.push("/");
+    }
+  }, [Cart]);
 
   return (
     <div className="checkout">

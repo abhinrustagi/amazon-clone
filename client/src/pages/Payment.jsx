@@ -10,7 +10,7 @@ import CurrencyFormat from "react-currency-format";
 // import { db } from "../utils/firebase";
 
 function Payment() {
-  const history = useHistory();
+  const History = useHistory();
   const [{ Cart, user }, dispatch] = useStateValue();
 
   const [address, setAddress] = useState(null);
@@ -54,6 +54,12 @@ function Payment() {
   //   getClientSecret();
   // }, [Cart]);
 
+  useEffect(() => {
+    if (Cart.length === 0) {
+      History.push("/");
+    }
+  }, [Cart]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
@@ -93,7 +99,7 @@ function Payment() {
           type: "EMPTY_CART",
         });
 
-        history.replace("/orders");
+        History.replace("/orders");
       })
       .catch((response) => {
         console.log(response);

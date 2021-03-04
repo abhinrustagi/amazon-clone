@@ -5,8 +5,12 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import { useStateValue } from "../utils/StateProvider";
 
+import { useHistory } from "react-router-dom";
+
 function Product({ id, title, price, image, rating }) {
   const [{ Cart }, dispatch] = useStateValue();
+
+  const History = useHistory();
 
   const addToCart = () => {
     dispatch({
@@ -19,6 +23,21 @@ function Product({ id, title, price, image, rating }) {
         rating: rating,
       },
     });
+  };
+
+  const buyNow = () => {
+    dispatch({
+      type: "ADD_TO_CART",
+      item: {
+        id: id,
+        title: title,
+        price: price,
+        image: image,
+        rating: rating,
+      },
+    });
+
+    History.push("/checkout");
   };
 
   return (
@@ -45,7 +64,7 @@ function Product({ id, title, price, image, rating }) {
         <ShoppingCartIcon style={{ marginRight: "5px" }} />
         Add to Cart
       </button>
-      <button className="buy_now_button">
+      <button className="buy_now_button" onClick={buyNow}>
         <PlayArrowIcon style={{ marginRight: "5px" }} />
         Buy Now
       </button>
