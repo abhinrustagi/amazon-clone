@@ -53,8 +53,16 @@ function Product({ match }) {
               ))}
           </div>
           <hr />
-          <p className="product-price">${product.price}</p>
+          <p>
+            Price: <span className="product-price">${product.price}</span>
+          </p>
+          <p>Inclusive of all taxes.</p>
+          <p>
+            FREE delivery: <strong>Friday</strong>
+          </p>
+          <p style={{ color: "#438a5e" }}>In stock.</p>
         </div>
+        <div className="product_page_buttons"><div className="button-box"></div></div>
       </div>
       <Footer />
     </div>

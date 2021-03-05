@@ -7,6 +7,7 @@ const productSchema = new Schema({
   price: Number,
   img: String,
   rating: Number,
+  desc: [String],
 });
 
 productSchema.plugin(mongooseFuzzySearching, { fields: ["name"] });

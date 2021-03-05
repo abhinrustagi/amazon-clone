@@ -32,6 +32,18 @@ const products = [
       "https://images-na.ssl-images-amazon.com/images/I/51Tbwd2PaDL._SL1000_.jpg",
     price: 399.99,
     rating: 3,
+    desc: [
+      "Latest release of our best-selling streaming media player. 50% more powerful than previous gen for fast streaming in Full HD. Includes Alexa Voice Remote with power and volume buttons. ",
+      "Voice remote (includes TV control) with dedicated power, volume and mute buttons to control your TV, so one remote is all you will need. ",
+      "Home theater audio with Dolby Atmos - Feel scenes come to life with immersive Dolby Atmos audio on select titles with compatible home audio systems.",
+      "Tens of thousands of movies and shows from Prime Video, Netflix, Disney+ Hotstar, Zee5, SonyLIV, Sun NXT, ALT Balaji, Discovery Plus and many other Apps. Subscription fees may apply ",
+      "What’s free - YouTube, YouTube Kids, MXPlayer, TVFPlay, YuppTV and many more.",
+      "Enjoy Full HD Picture quality and Dolby Atmos Audio. Mirror content from phone & laptop to the TV. Pair with compatible Bluetooth headphones.",
+      "Alexa voice search - Easily search, play, pause, rewind, or forward content with just your voice. Simply say 'Alexa, find comedies'. ",
+      "Watch movies, web series, news, sports & kids content on your TV. Comes with parental control. Subscription fees may apply",
+      "Easy to set up and stays hidden – plug in behind your TV into an HDMI port, turn on the TV and connect to the internet to set up.",
+      "Optimize your data usage by setting video quality and monitor your data usage.",
+    ],
   },
   {
     name: "iPhone X 128 GB Space Gray",
@@ -70,7 +82,7 @@ const products = [
     rating: 4,
   },
   {
-    name: "THE Bonsai Plant Beautiful Adenium Dessert Rose Plant",
+    name: "Bonsai Plant Beautiful Adenium Dessert Rose Plant",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/91jTyLFFEKL._SL1500_.jpg",
     price: 2.49,
