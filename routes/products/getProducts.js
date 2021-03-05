@@ -33,4 +33,26 @@ router.post("/search", async (req, res) => {
   });
 });
 
+router.get("/:id", (req, res) => {
+  Product.findById(req.params.id, (err, product) => {
+    if (err) {
+      res.json({
+        message: "Database Error.",
+        error: 1,
+        results: [{ name: "Error connecting to the database." }],
+      });
+    } else {
+      if (product) {
+        res.json({ message: "Successful", error: 0, results: product });
+      } else {
+        res.json({
+          message: "No Product Found",
+          error: 0,
+          results: [{ name: "No Product found." }],
+        });
+      }
+    }
+  });
+});
+
 module.exports = router;

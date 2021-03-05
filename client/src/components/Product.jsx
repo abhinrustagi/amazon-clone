@@ -4,6 +4,7 @@ import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import { useStateValue } from "../utils/StateProvider";
+import { Link } from "react-router-dom";
 
 import { useHistory } from "react-router-dom";
 
@@ -58,7 +59,9 @@ function Product({ id, title, price, image, rating }) {
         </div>
       </div>
 
-      <img src={image} alt="..." />
+      <Link to={`/products/${id}`}>
+        <img src={image} alt="..." />
+      </Link>
 
       <button className="amazon_button" onClick={addToCart}>
         <ShoppingCartIcon style={{ marginRight: "5px" }} />

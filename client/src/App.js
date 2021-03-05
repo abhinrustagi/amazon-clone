@@ -94,7 +94,7 @@ function App() {
             <Footer />
           </Route>
 
-          <Route exact path="/products/id" component={ProductPage} />
+          <Route exact path="/products/:id" component={ProductPage} />
         </Switch>
       </div>
     </Router>
