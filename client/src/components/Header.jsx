@@ -4,7 +4,7 @@ import "./styles/Header.css";
 import axios from "axios";
 
 import { useStateValue } from "../utils/StateProvider.js";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -16,6 +16,8 @@ function Header() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [input, setInput] = useState(null);
+
+  const History = useHistory();
 
   const handleAuth = () => {
     if (user) {
@@ -37,6 +39,10 @@ function Header() {
             }
           });
       }
+    }
+
+    if (input?.length === 0) {
+      setSearchResults([]);
     }
 
     getData();
@@ -69,19 +75,13 @@ function Header() {
             India
           </span>
         </div>
-        {/* <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log("Done");
-          }}
-        > */}
+
         <div className="headerSearch">
           <input
             onChange={handleInput}
-            onBlur={() => {
-              setSearchResults([]);
-              setInput(null);
-            }}
+            // onBlur={() => {
+            //   setSearchResults([]);
+            // }}
             className="headerSearchInput"
             type="text"
             name="search"
@@ -94,13 +94,9 @@ function Header() {
             <div className="results">
               {searchResults.map((term) => (
                 <div className="result__option">
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={`/products/${term._id}`}
-                  >
+                  <Link to={`/products/${term._id}`}>
                     <p>{term.name}</p>
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>

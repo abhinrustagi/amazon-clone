@@ -37,6 +37,10 @@
   font-size: 1.3rem;
 }
 
+.productTitle:hover {
+  color: #c45500;
+}
+
 .add_to_wishlist {
   display: block;
   font-size: 0.8rem;

@@ -6,9 +6,8 @@
   background-color: #131921;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 12;
   justify-content: center;
-  position: relative;
 }
 
 .headerLogo {
@@ -116,6 +115,7 @@
   top: 32px;
   width: 100%;
   left: 0;
+  z-index: 30;
   background-color: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

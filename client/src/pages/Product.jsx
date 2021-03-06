@@ -7,6 +7,9 @@ import StarIcon from "@material-ui/icons/Star";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import AddToCartButton from "../components/AddToCartButton";
+import BuyNowBtn from "../components/BuyNowBtn";
+
 import {
   AiFillFacebook,
   AiOutlineMail,
@@ -70,8 +73,20 @@ function Product({ match }) {
           </p>
           <p style={{ color: "#438a5e" }}>In stock.</p>
           <div className="button-box">
-            <button className="amazon_button">Add to Cart</button>
-            <button className="amazon_button_3">Buy Now</button>
+            <AddToCartButton
+              id={product?.id}
+              title={product?.title}
+              price={product?.price}
+              image={product?.img}
+              rating={product?.rating}
+            />
+            <BuyNowBtn
+              id={product?.id}
+              title={product?.title}
+              price={product?.price}
+              image={product?.img}
+              rating={product?.rating}
+            />
             <button className="amazon_button_2">Add to Wishlist</button>
             <p className="share_product">
               Share <AiFillFacebook />
