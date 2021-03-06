@@ -81,7 +81,9 @@ function Login() {
       <div className="registerAsk">
         <p className="registrationPrompt">New to Amazon?</p>
         <Link to="/register">
-          <button className="registerButton">Create your Amazon Account</button>
+          <button className="amazon_button_2">
+            Create your Amazon Account
+          </button>
         </Link>
       </div>
     </div>

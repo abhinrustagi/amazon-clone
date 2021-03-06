@@ -39,6 +39,10 @@ hr {
   margin: 15px 0;
 }
 
+p {
+  font-size: 0.9rem;
+}
+
 .App,
 #root,
 body,
@@ -46,16 +50,43 @@ html {
   height: 100%;
 }
 
-.amazon_button {
+.amazon_button,
+.amazon_button_2,
+.amazon_button_3 {
   display: flex;
   align-items: center;
-  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-  border: 1px solid;
-  margin-top: 10px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
-  color: #111;
-  padding: 7px 30px;
   border-radius: 3px;
+  padding: 7px 30px;
+  color: #111;
   justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  min-width: 280px;
+  margin: 5px 0;
+  border: 1px solid;
+}
+
+.amazon_button {
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
   border-color: #a88734 #9c7e31 #846a29;
+}
+
+.amazon_button_2 {
+  background: #e7e9ec;
+  background-image: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
+  border-color: #adb1b8;
+}
+
+.amazon_button:hover {
+  background: linear-gradient(to bottom, #f4d486, #eeba37);
+}
+.amazon_button_3 {
+  background-color: #f1b367;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+.amazon_button_3:hover {
+  background-color: #e18513;
 }

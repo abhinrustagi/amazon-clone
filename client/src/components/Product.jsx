@@ -1,15 +1,16 @@
 import React from "react";
 import "./styles/Product.css";
 import StarIcon from "@material-ui/icons/Star";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import { useStateValue } from "../utils/StateProvider";
 import { Link } from "react-router-dom";
 
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
 import { useHistory } from "react-router-dom";
 
 function Product({ id, title, price, image, rating }) {
-  const [{ Cart }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   const History = useHistory();
 
@@ -42,6 +43,14 @@ function Product({ id, title, price, image, rating }) {
     History.push("/checkout");
   };
 
+  const addToWishlist = () => {
+    if (!user) {
+      History.push("/login");
+    } else {
+      console.log("Added.");
+    }
+  };
+
   return (
     <div className="product">
       <div className="productInfo">
@@ -63,16 +72,27 @@ function Product({ id, title, price, image, rating }) {
       <Link to={`/products/${id}`}>
         <img src={image} alt="..." />
       </Link>
-
-      <button className="amazon_button" onClick={addToCart}>
-        <ShoppingCartIcon style={{ marginRight: "5px" }} />
-        Add to Cart
-      </button>
-      <button className="buy_now_button" onClick={buyNow}>
-        <PlayArrowIcon style={{ marginRight: "5px" }} />
-        Buy Now
-      </button>
-      <span className="add_to_wishlist">Add to Wishlist</span>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <button className="amazon_button" onClick={addToCart}>
+          <ShoppingCartIcon style={{ marginRight: "5px" }} />
+          Add to Cart
+        </button>
+        <button className="amazon_button_3" onClick={buyNow}>
+          <PlayArrowIcon style={{ marginRight: "5px" }} />
+          Buy Now
+        </button>
+        <span className="add_to_wishlist" onClick={addToWishlist}>
+          Add to Wishlist
+        </span>
+      </div>
     </div>
   );
 }

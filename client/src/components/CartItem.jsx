@@ -35,7 +35,7 @@ const CartItem = ({ title, image, price, rating, id, hideButton }) => {
         </div>
 
         {!hideButton && (
-          <button className="removeButton" onClick={removeFromCart}>
+          <button className="amazon_button_2" onClick={removeFromCart}>
             Remove Item from Cart
           </button>
         )}

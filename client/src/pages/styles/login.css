@@ -48,19 +48,6 @@
   font-size: 1rem;
 }
 
-button {
-  width: 100%;
-  margin: 10px auto;
-  max-width: 350px;
-}
-
-.registerButton {
-  background: #e7e9ec;
-  background-image: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
-  border-radius: 3px;
-  border-color: #adb1b8 #a2a6ac #8d9096;
-}
-
 .registrationPrompt {
   color: #767676;
   text-align: center;
@@ -68,4 +55,11 @@ button {
   margin-bottom: -5px;
   font-size: 12px;
   margin-top: 20px;
+}
+
+.registerAsk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

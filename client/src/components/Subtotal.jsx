@@ -30,7 +30,10 @@ function Subtotal() {
         prefix={"$"}
       />
       {Cart.length > 0 ? (
-        <button onClick={(e) => history.push("/payment")}>
+        <button
+          className="amazon_button"
+          onClick={(e) => history.push("/payment")}
+        >
           Proceed to Checkout
         </button>
       ) : null}

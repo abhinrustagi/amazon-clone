@@ -131,7 +131,7 @@ function Register() {
         >
           {error.text}
         </p>
-        <button type="submit" onClick={register}>
+        <button type="submit" onClick={register} className="amazon_button_2">
           Continue
         </button>
       </div>
