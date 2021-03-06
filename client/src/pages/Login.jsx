@@ -26,17 +26,21 @@ function Login() {
         password: password,
       })
       .then((res) => {
-        const data = decoder(res.data.token);
-        dispatch({
-          type: "SET_USER",
-          user: {
-            name: data.name,
-            phone: data.phone,
-            email: data.email,
-            address: data.address,
-          },
-        });
-        History.push("/");
+        if (res.data.success) {
+          const data = decoder(res.data.token);
+          dispatch({
+            type: "SET_USER",
+            user: {
+              name: data.name,
+              phone: data.phone,
+              email: data.email,
+              address: data.address,
+            },
+          });
+          History.push("/");
+        } else {
+          alert("Password Incorrect");
+        }
       });
   };
 
