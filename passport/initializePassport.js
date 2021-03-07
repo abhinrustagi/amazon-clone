@@ -18,21 +18,19 @@ function initialize(passport) {
         if (!user) {
           return done(null, false, { message: "No user with that email." });
         } else {
-          bcrypt
-            .compare(password, user.password)
-            .then((isValid) =>
-              isValid
-                ? done(null, {
-                    name: user.name,
-                    email: user.email,
-                    address: user.address,
-                    phone: user.phone,
-                  })
-                : done(null, false, { message: "Password Incorrect" })
-            );
+          bcrypt.compare(password, user.password).then((isValid) =>
+            isValid
+              ? done(null, {
+                  name: user.name,
+                  email: user.email,
+                  address: user.address,
+                  phone: user.phone,
+                })
+              : done(null, false, { message: "Password Incorrect" })
+          );
         }
       } else {
-        console.log(err);
+        return done(null, false, { message: "Unknown Error" });
       }
     });
   };

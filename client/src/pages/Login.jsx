@@ -13,12 +13,18 @@ function Login() {
 
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState(null);
+
+  const [buttonText, setButtonText] = useState("Continue");
+
   const [{ user }, dispatch] = useStateValue();
 
   const History = useHistory();
 
   const signIn = (e) => {
     e.preventDefault();
+
+    setButtonText("Processing");
 
     axios
       .post("http://localhost:8888/auth/login", {
@@ -39,7 +45,9 @@ function Login() {
           });
           History.push("/");
         } else {
-          alert("Password Incorrect");
+          console.log(res.data);
+          setError(res.data.message);
+          setButtonText("Continue");
         }
       });
   };
@@ -56,10 +64,11 @@ function Login() {
       <div className="login_container">
         <h1>Sign In</h1>
         <form>
+          <p className="error">{error}</p>
           <h5>Email Address or Phone Number</h5>
           <input
             className="input"
-            type="text"
+            type="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -73,7 +82,7 @@ function Login() {
             name="password"
           />
           <button className="amazon_button" onClick={signIn} type="submit">
-            Continue
+            {buttonText}
           </button>
         </form>
         <small>

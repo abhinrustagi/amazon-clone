@@ -8,6 +8,8 @@ import axios from "axios";
 function Register() {
   const [{ user }, dispatch] = useStateValue();
 
+  const [buttonText, setButtonText] = useState("Continue");
+
   const History = useHistory();
 
   const [state, changeState] = useState({
@@ -30,7 +32,7 @@ function Register() {
 
   const register = async (e) => {
     e.preventDefault();
-
+    setButtonText("Processing");
     // form validation
     if (
       state.password.length === 0 ||
@@ -44,15 +46,18 @@ function Register() {
         display: "block",
         text: "One or more fields empty.",
       });
+      setButtonText("Continue");
     }
     if (state.password !== state.password2) {
       setError({ ...error, display: "block", text: "Passwords must match." });
+      setButtonText("Continue");
     } else if (state.phone.length < 10 || state.phone.length > 10) {
       setError({
         ...error,
         display: "block",
         text: "Phone Number must be 10 digits.",
       });
+      setButtonText("Continue");
     } else {
       await axios
         .post("http://localhost:8888/auth/register", {
@@ -65,6 +70,7 @@ function Register() {
         .then((res) => {
           if (res.data.error) {
             setError({ ...error, display: "block", text: res.data.message });
+            setButtonText("Continue");
           } else {
             dispatch({ type: "SET_USER", user: res.data.user });
             History.push("/");
@@ -132,7 +138,7 @@ function Register() {
           {error.text}
         </p>
         <button type="submit" onClick={register} className="amazon_button_2">
-          Continue
+          {buttonText}
         </button>
       </div>
     </div>

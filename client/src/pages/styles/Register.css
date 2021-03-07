@@ -10,4 +10,5 @@ p.error {
   margin: 3px auto;
   color: red;
   font-size: 0.9rem;
+  text-align: center;
 }
